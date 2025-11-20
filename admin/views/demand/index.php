@@ -281,6 +281,14 @@ $(document).ready(function() {
         $('#demandId').val(demandId);
         $('#demandForm')[0].reset(); // 重置表单内容
         $('#demand-worker_uid').val(null).trigger('change');
+        $.ajax({
+            url: '<?php echo Url::to(['demand/get-assigned-workers']); ?>',
+            type: 'post',
+            data: {demandId: demandId},
+            success: function(data) {
+                console.log(data);
+            }
+        });
         $('#demandModal').modal('show');
     });
 
